@@ -1,4 +1,8 @@
 # group-on
+[![Build Status](https://travis-ci.org/theKastle/groupOn.svg?branch=master)](https://travis-ci.org/theKastle/groupOn)
+
+[![https://nodei.co/npm/group-on.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/group-on.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/group-on)
+
 
 #### groupOn.group(array, groupConfigs, callback)
 Return a Promise
