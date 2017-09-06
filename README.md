@@ -1,3 +1,4 @@
+# group-on
 
 #### groupOn.group(array, groupConfigs, callback)
 Return a Promise
