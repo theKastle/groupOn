@@ -43,7 +43,7 @@ Input:
 ```
 Usage:
 
-```
+```javascript
           groupOn
             .group(array, ['a.b', 'values', ['c']])
             .then(res => {
