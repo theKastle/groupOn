@@ -25,7 +25,7 @@ var normalGroupResult = null;
 
 suite
     .add('Normal Group ', function () {
-        normalGroupResult = groupOn().group(data, ['a', 'value', ['c']]);
+        normalGroupResult = groupOn.groupSync(data, ['a', 'value', ['c']]);
     })
     .on('cycle', function (event) {
         console.log(String(event.target));
