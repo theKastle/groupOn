@@ -1,6 +1,6 @@
 {
   "name": "groupon",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Decently fast group flat array into hierarchical structure",
   "main": "index.js",
   "directories": {
@@ -8,11 +8,13 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha -w"
+    "commit": "git-cz",
+    "test": "mocha -w",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theKastle/groupOn.git"
+    "url": "https://github.com/theKastle/groupOn.git"
   },
   "keywords": [
     "group",
@@ -26,10 +28,13 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chai": "^4.1.2",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-watch": "^1.0.0",
     "mocha": "^3.5.0",
+    "semantic-release": "^7.0.2",
     "should": "^11.2.1"
   },
   "dependencies": {
@@ -39,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/theKastle/groupOn/issues"
   },
-  "homepage": "https://github.com/theKastle/groupOn#readme"
+  "homepage": "https://github.com/theKastle/groupOn#readme",
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  }
 }
