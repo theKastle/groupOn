@@ -3,6 +3,8 @@ var expect = require('chai').expect;
 var should = require('should');
 var groupOn = require('../lib/groupOn');
 var data = require('../default-test.json');
+var test1 = require('../test-1.json');
+var test2 = require('../test-2.json')
 
 describe('groupOn groups Default Test, common factors: a.b, groupNames: values, leaves: c', function () {
     var array = null;
@@ -34,6 +36,7 @@ describe('groupOn groups Default Test return Promise', function () {
         groupOn
             .group(array, ['a.b', 'values', ['c']])
             .then(res => {
+                console.log('%j', res)
                 result = res;
             })
             .catch(console.log);
@@ -109,3 +112,51 @@ describe('groupOn groups Default Test with invalid configs', function () {
         expect(result).null
     });
 });
+
+describe('groupOn get leaves with diferent path', function () {
+    var array = null;
+    var result = null;
+    var error = null;
+    before(function (done) {
+        array = test1;
+        groupOn
+            .group(array, ['a.b', 'values', ['c.d', 'c.e.f']], (err, res) => {
+                if (err) {
+                    error = err;
+                    return done()
+                }
+                result = res;
+                done()
+            })
+            .catch(err => { error = err })
+    });
+
+    it('Result should be array', function () {
+        result.should.be.Array();
+    });
+
+})
+
+describe(`groupOn group by non-primitive field`, function () {
+    var array = null;
+    var result = null;
+    var error = null;
+    before(function (done) {
+        array = test2;
+        groupOn
+            .group(array, ['c', 'values', ['a', 'b']], (err, res) => {
+                if (err) {
+                    error = err;
+                    return done()
+                }
+                result = res;
+                done()
+            })
+            .catch(err => { error = err })
+    });
+
+    it('Result should be array', function () {
+        result.should.be.Array();
+    });
+
+})

@@ -48,7 +48,7 @@ Input:
     ]
     
 ```
-Usage:
+## Usage:
 
 ```javascript
           groupOn
@@ -61,7 +61,7 @@ Usage:
 
 Output:
 
-```
+```json
 [
     {
         "a": "A",
@@ -132,6 +132,187 @@ Output:
 ]
 ```
 
+## Get leaves with diferent path
+
+Input:
+```json
+[
+    {
+        "a": "A",
+        "b": "D",
+        "c": {
+            "d": "AD",
+            "e": {
+                "f": 0
+            }
+        }
+    },
+    {
+        "a": "B",
+        "b": "B",
+        "c": {
+            "d": "BB",
+            "e": {
+                "f": 1
+            }
+        }
+    },
+    {
+        "a": "B",
+        "b": "B",
+        "c": {
+            "d": "BB",
+            "e": {
+                "f": 2
+            }
+        }
+    },
+    {
+        "a": "A",
+        "b": "C",
+        "c": {
+            "d": "AC",
+            "e": {
+                "f": 3
+            }
+        }
+    }
+]
+```
+
+```javascript
+groupOn
+    .group(array, ['a.b', 'values', ['c.d', 'c.e.f']])
+    .then(console.log)
+    .catch(console.log)
+```
+
+Output:
+```json
+[
+    {
+        "a": "A",
+        "b": "D",
+        "values": [
+            {
+                "c.d": "AD",
+                "c.e.f": 0
+            }
+        ]
+    },
+    {
+        "a": "B",
+        "b": "B",
+        "values": [
+            {
+                "c.d": "BB",
+                "c.e.f": 1
+            },
+            {
+                "c.d": "BB",
+                "c.e.f": 2
+            }
+        ]
+    },
+    {
+        "a": "A",
+        "b": "C",
+        "values": [
+            {
+                "c.d": "AC",
+                "c.e.f": 3
+            }
+        ]
+    }
+]]}]
+
+```
+
+## Get by non-premitive field
+Input
+```json
+[
+    {
+        "a": "A",
+        "b": "D",
+        "c": {
+            "d": "AD"
+        }
+    },
+    {
+        "a": "B",
+        "b": "B",
+        "c": {
+            "d": "BB"
+        }
+    },
+    {
+        "a": "B",
+        "b": "B",
+        "c": {
+            "d": "BB"
+        }
+    },
+    {
+        "a": "A",
+        "b": "C",
+        "c": {
+            "d": "AC"
+        }
+    }
+]
+```
+
+```javascript
+ groupOn
+    .group(array, ['c', 'values', ['a', 'b']])
+    .then(console.log)
+    .catch(console.log)
+```
+
+Output:
+```json
+[
+    {
+        "c": {
+            "d": "AD"
+        },
+        "values": [
+            {
+                "a": "A",
+                "b": "D"
+            }
+        ]
+    },
+    {
+        "c": {
+            "d": "BB"
+        },
+        "values": [
+            {
+                "a": "B",
+                "b": "B"
+            },
+            {
+                "a": "B",
+                "b": "B"
+            }
+        ]
+    },
+    {
+        "c": {
+            "d": "AC"
+        },
+        "values": [
+            {
+                "a": "A",
+                "b": "C"
+            }
+        ]
+    }
+]
+```
+
 * * *
 
-&copy; 2017 - lqtien
+&copy; 2017 - MIT
