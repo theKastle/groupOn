@@ -33,7 +33,7 @@ Example:
   
 Input: 
 
-```
+```javascript
     var array = [
         {"a": "A", "b": "D", "c": "AD", "d": "4", "e": 1},
         {"a": "B", "b": "B", "c": "BB", "d": "4", "e": 1},
