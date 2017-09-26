@@ -1,6 +1,6 @@
 {
   "name": "group-on",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "Decently fast group flat array into hierarchical structure",
   "main": "index.js",
   "readme": "README.md",
