@@ -228,7 +228,7 @@ Output:
 
 ```
 
-## Get by non-premitive field
+## Get by non-primitive field
 Input
 ```json
 [
